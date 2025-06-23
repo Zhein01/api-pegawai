@@ -144,7 +144,7 @@ public function getByLowongan($id)
         }
     }
 
-    public function cetakPDF(Request $request)
+    public function cetakHasil(Request $request)
     {
         $request->validate([
             'lamaran_id' => 'required',

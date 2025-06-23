@@ -165,7 +165,7 @@ public function getByLowongan($id)
             'status' => $hasil->status,
         ];
 
-        $pdf = Pdf::loadView('pdf.hasil-lamaran', $data);
+        $pdf = Pdf::loadView('hasil-lamaran', $data);
         // return $pdf->stream("hasil-lamaran-{$data['nama']}.pdf"); // stream = buka di browser
         return $pdf->download("hasil-lamaran-{$data['nama']}.pdf"); // jika ingin langsung unduh
     }

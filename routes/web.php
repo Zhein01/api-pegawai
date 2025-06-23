@@ -30,7 +30,7 @@ Route::get('user/get/soal', [UserSoalController::class, 'getSoal']);
 Route::get('user/soal/cek', [UserSoalController::class, 'isSend']);
 Route::get('user/soal/send', [UserSoalController::class, 'sendJawaban']);
 Route::get('user/lamaran/hasil', [LamaranController::class, 'lihatHasilLamaran']);
-Route::get('user/lamaran/hasil/cetak-pdf', [LamaranController::class, 'cetakHasil']);
+Route::get('user/lamaran/hasil/cetak-pdf', [LamaranController::class, 'cetakPDF']);
 
 Route::get('lowongan/get', [AdminLowonganController::class, 'getLowongan']);
 Route::get('lowongan/add', [AdminLowonganController::class, 'addLowongan']);

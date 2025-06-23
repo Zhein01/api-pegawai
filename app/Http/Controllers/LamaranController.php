@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hasil;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\Lamaran; // Sesuaikan dengan model yang kamu gunakan
 use Exception;
@@ -141,5 +142,31 @@ public function getByLowongan($id)
                 'message' => 'Failed: ' . $e,
             ], Response::HTTP_BAD_REQUEST);
         }
+    }
+
+    public function cetakPDF(Request $request)
+    {
+        $request->validate([
+            'lamaran_id' => 'required',
+        ]);
+
+        $hasil = Hasil::where('lamaran_id', $request->lamaran_id)->first();
+
+        if (!$hasil) {
+            return abort(404, 'Data tidak ditemukan');
+        }
+
+        $data = [
+            'nama' => $hasil->lamaran->nama,
+            'email' => $hasil->lamaran->email,
+            'telepon' => $hasil->lamaran->telepon,
+            'pendidikan' => $hasil->lamaran->pendidikan,
+            'skor' => $hasil->skor,
+            'status' => $hasil->status,
+        ];
+
+        $pdf = Pdf::loadView('pdf.hasil-lamaran', $data);
+        // return $pdf->stream("hasil-lamaran-{$data['nama']}.pdf"); // stream = buka di browser
+        return $pdf->download("hasil-lamaran-{$data['nama']}.pdf"); // jika ingin langsung unduh
     }
 }

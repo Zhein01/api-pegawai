@@ -222,11 +222,13 @@ class AdminLowonganController extends Controller
 
             $dataHasil = $hasilList->map(function ($hasil) {
                 return [
+                    'id' => $hasil->id,
+                    'lamaranId' => $hasil->lamaran_id,
                     'nama' => $hasil->lamaran->nama ?? 'Tidak ada nama',
                     'skor' => $hasil->skor,
                     'status' => $hasil->status
                 ];
-            });
+            });            
 
             return response()->json([
                 'success' => true,

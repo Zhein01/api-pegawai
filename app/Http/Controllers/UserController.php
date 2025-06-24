@@ -19,6 +19,8 @@ class UserController extends Controller
             'alamat' => 'required',
             'jkl' => 'required',
             'no_hp' => 'required',
+            'tempat_lahir`' => 'required',
+            'tgl_lahir`' => 'required',
             'username' => 'required|string|unique:users,username',
             'password' => 'required',
         ]);
@@ -30,6 +32,8 @@ class UserController extends Controller
             'alamat' => $validated['alamat'],
             'jkl' => $validated['jkl'],
             'no_hp' => $validated['no_hp'],
+            'tempat_lahir' => $validated['tempat_lahir'],
+            'tgl_lahir' => $validated['tgl_lahir'],
             'username' => $validated['username'],
             'password' => bcrypt($validated['password']),
         ]);

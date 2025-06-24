@@ -19,7 +19,7 @@ class UserController extends Controller
             'alamat' => 'required',
             'jkl' => 'required',
             'no_hp' => 'required',
-            'tempat_lahir`' => 'required',
+            'tempat_lahir' => 'required',
             'tgl_lahir`' => 'required',
             'username' => 'required|string|unique:users,username',
             'password' => 'required',
